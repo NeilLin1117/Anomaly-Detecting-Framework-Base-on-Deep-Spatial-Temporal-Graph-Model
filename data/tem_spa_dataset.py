@@ -20,7 +20,7 @@ class tem_spa_Time_series(data.Dataset):
         self.start_date = start_date
         self.end_date = end_date
         
-        self.datas = self.data_preprocessing(select_pm_2_5,previous)
+        self.datas = self.time_rolling(select_pm_2_5,previous)
         test = self.pm_2_5.loc[self.start_date:]
         #print(self.datas.shape)
         #new_data = pd.merge(test,new_data,left_index=True,right_index=True)
@@ -40,7 +40,7 @@ class tem_spa_Time_series(data.Dataset):
         #    ht = Heatmap(test['predict'].to_frame(),temporal,previous)
         #    ht.plots(folder)
         
-    def data_preprocessing(self,dataframe,previous):
+    def time_rolling(self,dataframe,previous):
         #for i , col in enumerate(dataframe.columns):
         for i in range(self.node_cnt):
             tmp = dataframe.loc[self.train_date:,:]
