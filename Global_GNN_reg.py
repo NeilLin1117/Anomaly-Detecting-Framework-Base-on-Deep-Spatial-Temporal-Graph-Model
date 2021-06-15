@@ -123,11 +123,11 @@ class Global_GNN_Regression():
                         optimizer.zero_grad()
                         if self.opt.model == "gwnet":
 
-                            y_pred = y_pred[:,:,:,:].view(y_pred.size(0), -1)
+                            y_pred = y_pred.view(y_pred.size(0), -1)
 
                         #STGCN loss function
                         else:
-                            y_pred = y_pred[:,:,:,:].view(y_pred.size(0), -1)  
+                            y_pred = y_pred.view(y_pred.size(0), -1)  
 
                         single_loss = loss_function(y_pred, labels)
                         total_loss += single_loss.item()
