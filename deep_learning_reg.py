@@ -16,6 +16,7 @@ import torch.nn as nn
 from utils import plain_evl_result
 import fire
 from sklearn.metrics import mean_squared_error, r2_score
+import copy
 
 
 class Deep_learning_Regression():
@@ -33,7 +34,7 @@ class Deep_learning_Regression():
         #self.get_model_type()
         self.dirs_remake(self.opt.target_foler,self.opt.name)
         #self.dirs_remake(self.opt.target_foler,self.opt.model_by_day)
-        self.model = self.model.to(self.opt.device)
+        
         self.df = pd.read_csv(self.opt.dataframe_csv)
 #         if not os.path.exists(os.path.join(self.opt.target_foler,self.opt.name)):
 #             os.mkdir(os.path.join(self.opt.target_foler,self.opt.name))
@@ -41,9 +42,11 @@ class Deep_learning_Regression():
         self.df['bias']= self.df['bias'].astype(int)
         self.evl_df = pd.DataFrame(columns=['Date','MSE','R2_score','bias'])
         for i in trange(self.df.shape[0], desc='progressing device number'):
+            Model = copy.deepcopy(self.model) 
+            Model = Model.to(self.opt.device)
             loss_function = nn.MSELoss()
             lr = self.opt.lr
-            optimizer = self.model.get_optimizer(lr, self.opt.weight_decay)
+            optimizer = Model.get_optimizer(lr, self.opt.weight_decay)
 
             if os.path.exists(os.path.join(self.opt.train_data_root, str(self.df.iloc[i]['device_ID'])+'.csv')):
                 pm2_5 = pd.read_csv(os.path.join(self.opt.train_data_root, str(self.df.iloc[i]
@@ -54,11 +57,9 @@ class Deep_learning_Regression():
                 try:
                     for dirPath, dirNames, fileNames in os.walk(os.path.join
                             ('save',self.opt.load_model_path,str(self.df.iloc[i]['device_ID']))):
-                        self.model.load(os.path.join(dirPath,fileNames[0]))
-                        
+                        Model.load(os.path.join(dirPath,fileNames[0]))
                 except:
-                    path = os.path.join('save',
-                                        self.opt.load_model_path,str(self.df.iloc[i]['device_ID']))
+                    path = os.path.join('save',self.opt.load_model_path,str(self.df.iloc[i]['device_ID']))
                     raise ValueError(f'Not exist {path!r} model path!')
                 
             end = datetime.strptime(self.df.iloc[i]['time'],"%Y-%m-%d %H:%M:%S")
@@ -79,7 +80,7 @@ class Deep_learning_Regression():
                         datas = datas.to(self.opt.device)
                         labels = labels.to(self.opt.device)
                         optimizer.zero_grad()
-                        y_pred = self.model(datas,self.opt.device)
+                        y_pred = Model(datas,self.opt.device)
                         single_loss = loss_function(y_pred, labels)
                         total_loss += single_loss.item()
                         single_loss.backward()
@@ -87,7 +88,7 @@ class Deep_learning_Regression():
 
                     total.append(total_loss)
                 if self.opt.model_save:
-                    self.model.save(self.opt.name,str(self.df.iloc[i]['device_ID']))
+                    Model.save(self.opt.name,str(self.df.iloc[i]['device_ID']))
                 if self.opt.visual:
                     plt.plot(range(self.opt.max_epoch), total)
                     plt.title(str(self.df.iloc[i]['device_ID']))
@@ -96,7 +97,7 @@ class Deep_learning_Regression():
                     #plt.savefig('images/12_07.png', dpi=300)
                     plt.show()
             if self.opt.model_test:
-                self.predict(pm2_5,end,'%Y-%m-%d',self.opt.name,i)
+                self.predict(Model,pm2_5,end,'%Y-%m-%d',self.opt.name,i)
             
         if self.opt.model_test:
             self.evl_df.to_csv(os.path.join
@@ -109,7 +110,7 @@ class Deep_learning_Regression():
         else:
             os.mkdir(os.path.join(target_foler,model)) 
             
-    def data_output(self,pm2_5,date,day_format,index):
+    def data_output(self,Model,pm2_5,date,day_format,index):
         test = pm2_5[date.strftime(day_format)]
         test_start_dates = str(test.index[0])
         test_end_dates = str(test.index[test.shape[0]-1])
@@ -122,9 +123,9 @@ class Deep_learning_Regression():
                                            shuffle=False)
         with torch.no_grad():
             for k ,(datas, labels) in enumerate(test_loader): 
-                self.model = self.model.to(self.opt.device)
+                Model = Model.to(self.opt.device)
                 datas = datas.to(self.opt.device)
-                outputs = self.model(datas,self.opt.device)
+                outputs = Model(datas,self.opt.device)
                 if k == 0:
                     result = outputs.cpu().numpy()
                     labs = labels.cpu().numpy()
@@ -137,12 +138,12 @@ class Deep_learning_Regression():
                     labs = np.concatenate([labs, tmp_labs], axis=0)
         return labs , result
     
-    def predict(self,pm2_5,date,day_format,target,index):
-        labs , result = self.data_output(pm2_5,date,day_format,index)
+    def predict(self,Model,pm2_5,date,day_format,target,index):
+        labs , result = self.data_output(Model,pm2_5,date,day_format,index)
         self.evl_df = self.evl_df.append({"Date":date.strftime(day_format),
                             "MSE":mean_squared_error(labs, result)
                                 ,"R2_score":r2_score(labs, result),
-                                 "bias":self.df.iloc[index]['bias']},ignore_index=True)        
+                                 "bias":self.df.iloc[index]['bias']},ignore_index=True)         
         
 def regression(**kwargs):
     opt = DefaultConfig()

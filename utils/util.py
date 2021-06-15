@@ -34,15 +34,19 @@ def plain_evl_result(dataframe,target,name,at_n):
     for i in range(10,at_n+1,10):
         first_data = df[:i]
         recall_at = (first_data['bias'] == 1).sum() / relevant_item
-        recall.append(recall_at)
+        recall.append(round(recall_at,3))
         precision_at = (first_data['bias'] == 1).sum() / len(first_data)
-        precision.append(precision_at)
-        print(f'precision@{i}: {precision_at}')
-        print(f'recall@{i}: {recall_at}')
+        precision.append(round(precision_at,3))
+        print(f'precision@{i}: {precision_at:.3f}')
+        print(f'recall@{i}: {recall_at:.3f}')
     plt.plot(range(10,at_n+1,10) ,precision , color = 'blue' ,linestyle='-', label='precision@n')
     plt.scatter(range(10,at_n+1,10) , precision , c = 'blue',marker = '.')
     plt.plot( range(10,at_n+1,10), recall, color = 'red' ,linestyle='-', label='recall@n')
     plt.scatter(range(10,at_n+1,10) , recall, c = 'red',marker = '.')
+    
+    for k,i in enumerate(range(10,at_n+1,10)):
+        plt.annotate(str(precision[k]), xy = (i, precision[k]), xytext = (i+0.5, precision[k]+0.01))
+        plt.annotate(str(recall[k]), xy = (i, recall[k]), xytext = (i+0.5, recall[k]+0.01))
     plt.legend(loc="best")
     plt.xlabel('@n')
     plt.ylabel('rate')
