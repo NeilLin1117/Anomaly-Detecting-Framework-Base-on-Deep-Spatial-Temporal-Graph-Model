@@ -156,7 +156,7 @@ class Machine_learning_Regression():
         
         if not os.path.exists(os.path.join('.','save')):
             os.mkdir(os.path.join('.','save'))
-        #檢查checkpoints目錄下是否有模型的資料夾存在
+        #檢查save目錄下是否有模型的資料夾存在
         if not os.path.exists(os.path.join('save',name)):
             os.mkdir(os.path.join('save',name))
         if not os.path.exists(os.path.join('save',name,device)):
