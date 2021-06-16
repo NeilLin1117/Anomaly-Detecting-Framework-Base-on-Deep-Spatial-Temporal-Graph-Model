@@ -5,7 +5,7 @@ Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Ba
 
 ## Datasets
 #### device_ground_truth.csv/
-Data format:
+Csv format:
 ```
 last_three_number, time, bias, device_ID
 ```
