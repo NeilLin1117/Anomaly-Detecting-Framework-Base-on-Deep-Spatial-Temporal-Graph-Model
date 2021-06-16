@@ -47,9 +47,19 @@ class DefaultConfig(object):
     random_state = 1
     n_jobs=-1
     
-    #### Lasso and Ridge ####
+    #### Lasso  and Ridge ####
     alpha=1.0
-    random_state = 3
+    random_state = None
+    fit_intercept=True, 
+    normalize=False, 
+    precompute=False, 
+    copy_X=True, 
+    max_iter=1000, 
+    tol=0.0001, 
+    warm_start=False, 
+    positive=False,
+    selection='cyclic
+    solver='auto'
     
     #### STGCN ####
     num_nodes = 6
