@@ -4,7 +4,7 @@
 Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Base on DeepSpatial-Temporal Graph Model.
 
 ## Datasets
-#### device_ground_truth.csv
+### device_ground_truth.csv
 csv format:
 ```
 last_three_number, time, bias, device_ID
@@ -14,11 +14,16 @@ last_three_number, time, bias, device_ID
 - bias: Whether there is an abnormality, 1 means abnormal, 0 means normal
 - device_ID: ID number of the Air Quality Sensors
 
-#### normalized_laplacian_144.npy
-* a npy file store a normalized laplacian graph structure with 144 nodes
+### normalized_laplacian_144.npy
+* a npy file store a normalized laplacian graph structure with 144 nodes.
 
-#### normalized_laplacian_144.npy
-* a npy file store a normalized laplacian graph structure with 144 nodes
+### temporal_spatio_pm_2_5_144.gz
+* a gz file store temporal spatio pm2.5 series datas of 144 devices. 
+
+data format:
+```
+time, ID_1, ID_2, ID_3, ... ID_144
+```
 
 ## Project experiment environment  
 - OS：  
