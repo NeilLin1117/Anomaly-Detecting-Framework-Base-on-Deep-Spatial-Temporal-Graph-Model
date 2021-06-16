@@ -1,5 +1,11 @@
 # Anomaly-Detecting-Framework-Base-on-Deep-Spatial-Temporal-Graph-Model
 
+# Introduction
+Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Base on DeepSpatial-Temporal Graph Model.
+
+# Datasets
+
+
 ## Project experiment environment  
 - OS：  
     - Distributor ID: Ubuntu  
