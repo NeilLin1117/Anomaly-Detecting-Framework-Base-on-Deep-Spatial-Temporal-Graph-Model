@@ -95,7 +95,7 @@ $python deep_learning_reg.py regression
                 --model="Lasso"
                 --max_epoch=10
 ```
-### Model parameters/ [description](https://hackmd.io/LlPx8ZzLQZ6vyfA9QSNMPg?view) 
+### Model parameters/ [description](https://hackmd.io/8tQ4zjZ-TG-bFzA3Uchumw?view) 
 ## Datasets
 ### device_ground_truth.csv
 csv format:
