@@ -5,7 +5,7 @@ Detecting Malfunctioned Air Quality Sensors – an Anomaly Detecting Framework B
 
 ## Quickstart
 ### GNN_reg<span></span>.py
-* training method is many to one (model seperated).
+* Training method is many to one (model seperated).
 
 Usage:
 ```
@@ -27,7 +27,7 @@ $python GNN_reg.py regression
 ```
 
 ### Global_GNN_reg<span></span>.py
-* training method is all to all.
+* Training method is all to all.
 
 Usage:
 ```
@@ -49,7 +49,7 @@ $python Global_GNN_reg.py regression
 ```
 
 ### Dep_GNN_reg<span></span>.py
-* training method is many to one (model uniform).
+* Training method is many to one (model uniform).
 
 Usage:
 ```
@@ -70,7 +70,7 @@ $python Dep_GNN_reg.py regression
                 --num_nodes=6
 ```
 ### deep_learning_reg<span></span>.py
-* training method is many to one (model seperated).
+* Training method is many to one (model seperated).
 
 Usage:
 ```
@@ -89,7 +89,7 @@ $python deep_learning_reg.py regression
                 --use_gpu=True
 ```
 ### machine_learning_reg<span></span>.py
-* training method is many to one (model seperated).
+* Training method is many to one (model seperated).
 
 Usage:
 ```
