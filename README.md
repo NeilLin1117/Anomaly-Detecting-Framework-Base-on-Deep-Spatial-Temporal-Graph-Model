@@ -32,7 +32,7 @@ time , ID_1, ID_2, ID_3, ... , ID_144
 * a npy file store a normalized laplacian graph structure with 144 nodes.
 
 ### temporal_spatio_pm_2_5 
-* a folder contain 144 csv file.
+* a folder contain 144 csv files.
 * each csv file contain temporal spatio pm2.5 series datas of 6 devices.
 * label column mean pm2.5 series datas of the center device
 * ID_1, ID_2, ... , ID_5 means the five nearest devices around center device
@@ -48,7 +48,7 @@ time , label, ID_1, ID_2, ... , ID_5
 ```
 
 ### normalized_laplacian
-* a folder contain 144 npy file.
+* a folder contain 144 npy files.
 * each npy file contain store a normalized laplacian graph structure with 6 nodes.
 * each npy file is the graph structure correspond to the csv file in temporal_spatio_pm_2_5 folder
 
