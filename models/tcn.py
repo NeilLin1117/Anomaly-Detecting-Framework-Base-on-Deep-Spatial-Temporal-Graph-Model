@@ -4,7 +4,7 @@ from .basic_module import BasicModule
 
 
 class TCN(BasicModule):
-    def __init__(self, sequence_length,input_size, output_size, num_channels, kernel_size, dropout):
+    def __init__(self,sequence_length=30,input_size=6, output_size=1, num_channels=[16,32,48], kernel_size=3, dropout=0.0):
         super(TCN, self).__init__()
         self.seq_len = sequence_length
         self.input_size = input_size

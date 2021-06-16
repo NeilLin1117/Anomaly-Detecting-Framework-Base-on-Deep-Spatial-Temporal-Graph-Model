@@ -5,7 +5,7 @@ from torch.autograd import Variable
 import torch
 
 class LSTM(BasicModule):
-    def __init__(self, input_size, hidden_size, layers, output_size,sequence_length):
+    def __init__(self, input_size=6, hidden_size=128,layers=3,output_size=1,sequence_length=30):
         super(LSTM, self).__init__()
         self.input_size = input_size
         self.sequence_length = sequence_length
