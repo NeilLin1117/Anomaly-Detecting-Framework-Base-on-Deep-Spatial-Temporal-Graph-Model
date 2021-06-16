@@ -9,10 +9,10 @@ Data format:
 ```
 last_three_number, time, bias, device_ID
 ```
-- last_three_number: 空汙感測器其型號末三碼
-- time: 空汙感測器巡檢日期
-- bias: 是否出現異常，1代表異常，0代表正常
-- device_ID: 空汙感測器ID編號
+- last_three_number: The last three digits of the air quality sensor's type
+- time: Inspection date of the Air Quality Sensors
+- bias: Whether there is an abnormality, 1 means abnormal, 0 means normal
+- device_ID: ID number of the Air Quality Sensors
 
 ## Project experiment environment  
 - OS：  
