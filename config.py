@@ -6,8 +6,8 @@ import torch as t
 class DefaultConfig(object):
     name = 'test'  # 為模型取名稱
     model_by_day = 'LSTM_pm_2_5_by_day'
-    train_data_root = './data/pm_2_5_distancewithvalue_th'  
-    train_144_path = './data/distance_value_144.gz'
+    train_data_root = './data/temporal_spatio_pm_2_5'  
+    train_144_path = './data/temporal_spatio_pm_2_5_144.gz'
     laplacian_folder = './data/normalized_laplacian'
     laplacian_144_path = './data/normalized_laplacian_144.npy'
     dataframe_csv = './data/device_ground_truth.csv'
