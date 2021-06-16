@@ -1,9 +1,9 @@
-# Anomaly-Detecting-Framework-Base-on-Deep-Spatial-Temporal-Graph-Model
+## Anomaly-Detecting-Framework-Base-on-Deep-Spatial-Temporal-Graph-Model
 
-# Introduction
+## Introduction
 Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Base on DeepSpatial-Temporal Graph Model.
 
-# Datasets
+## Datasets
 
 
 ## Project experiment environment  
@@ -21,3 +21,7 @@ Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Ba
     - matplotlib: 3.1.2
     - fire: 0.4.0
     - joblib: 1.0.1
+# Reference
+1. https://github.com/chenyuntc/pytorch-book
+2. https://github.com/nnzhan/Graph-WaveNet
+3. https://github.com/Aguin/STGCN-PyTorch
