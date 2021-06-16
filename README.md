@@ -1,7 +1,7 @@
 ## Anomaly-Detecting-Framework-Base-on-Deep-Spatial-Temporal-Graph-Model
 
 ## Introduction
-Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Base on DeepSpatial-Temporal Graph Model.
+Detecting Malfunctioned Air Quality Sensors – an Anomaly Detecting Framework Base on DeepSpatial-Temporal Graph Model.
 
 ## Quickstart
 ### GNN_reg<span></span>.py
