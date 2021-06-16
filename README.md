@@ -5,15 +5,86 @@ Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Ba
 
 ## Quickstart
 ### GNN_reg<span></span>.py
+$python GNN_reg.py regression 
+                --name <name of model> 
+                --model <model type, "gwnet" or "STGCN"> 
+                --max_epoch <number of epoch>
+                --use_gpu <weather use gpu>
+                --num_nodes <number of graph node>
+```
+Example:
+```
+$python GNN_reg.py regression 
+                --name="GraphWaveNet_v1"
+                --model="gwnet"
+                --max_epoch=10
+                --use_gpu=True
+                --num_nodes=6
+```
 
 ### Global_GNN_reg<span></span>.py
+$python Global_GNN_reg.py regression 
+                --name <name of model> 
+                --model <model type, "gwnet" or "STGCN"> 
+                --max_epoch <number of epoch>
+                --use_gpu <weather use gpu>
+                --num_nodes <number of graph node>
+```
+Example:
+```
+$python Global_GNN_reg.py regression 
+                --name="GraphWaveNet_v1"
+                --model="gwnet"
+                --max_epoch=10
+                --use_gpu=True
+                --num_nodes=144
+```
 
 ### Dep_GNN_reg<span></span>.py
-
+$python Dep_GNN_reg.py regression 
+                --name <name of model> 
+                --model <model type, "gwnet" or "STGCN"> 
+                --max_epoch <number of epoch>
+                --use_gpu <weather use gpu>
+                --num_nodes <number of graph node>
+```
+Example:
+```
+$python Dep_GNN_reg.py regression 
+                --name="GraphWaveNet_v1"
+                --model="gwnet"
+                --max_epoch=10
+                --use_gpu=True
+                --num_nodes=6
+```
 ### deep_learning_reg<span></span>.py
-
+$python deep_learning_reg.py regression 
+                --name <name of model> 
+                --model <model type, "TCN" or "LSTM" or "DNN"> 
+                --max_epoch <number of epoch>
+                --use_gpu <weather use gpu>
+```
+Example:
+```
+$python deep_learning_reg.py regression 
+                --name="TCN_v1"
+                --model="TCN"
+                --max_epoch=10
+                --use_gpu=True
+```
 ### machine_learning_reg<span></span>.py
-
+$python deep_learning_reg.py regression 
+                --name <name of model> 
+                --model <model type, "Lasso" or "Ridge" or "RandomForest"> 
+                --max_epoch <number of epoch>
+```
+Example:
+```
+$python deep_learning_reg.py regression 
+                --name="Lasso_v1"
+                --model="Lasso"
+                --max_epoch=10
+```
 ## Datasets
 ### device_ground_truth.csv
 csv format:
