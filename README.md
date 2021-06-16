@@ -4,7 +4,15 @@
 Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Base on DeepSpatial-Temporal Graph Model.
 
 ## Datasets
-
+#### device_ground_truth.csv/
+Data format:
+```
+last_three_number time bias device_ID
+```
+- last_three_number: 空汙感測器其型號末三碼
+- time: 空汙感測器巡檢日期
+- bias: 是否出現異常，1代表異常，0代表正常
+- device_ID: 空汙感測器ID編號
 
 ## Project experiment environment  
 - OS：  
