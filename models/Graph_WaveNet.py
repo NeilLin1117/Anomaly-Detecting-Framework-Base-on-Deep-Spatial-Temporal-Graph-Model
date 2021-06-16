@@ -58,7 +58,7 @@ class gcn(nn.Module):
 
 
 class gwnet(BasicModule):
-    def __init__(self,device , num_nodes = 6, dropout=0.3, gcn_bool=True, addaptadj=True, aptinit=None, 
+    def __init__(self,device=torch.device('cpu'), num_nodes = 6, dropout=0.3, gcn_bool=True, addaptadj=True, aptinit=None, 
              in_dim=1,out_dim=1,sequence_length = 30,residual_channels=32,dilation_channels=32,skip_channels=256,
                  end_channels=512,kernel_size=2,blocks=4,layers=2):
         super().__init__()
