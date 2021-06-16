@@ -4,9 +4,9 @@ import pandas as pd
 import torch as t
 
 class DefaultConfig(object):
-    name = 'test'  # 使用的模型
+    name = 'test'  # 為模型取名稱
     model_by_day = 'LSTM_pm_2_5_by_day'
-    train_data_root = './data/pm_2_5_distancewithvalue_th'  # 训练集存放路径
+    train_data_root = './data/pm_2_5_distancewithvalue_th'  
     train_144_path = './data/distance_value_144.gz'
     laplacian_folder = './data/normalized_laplacian'
     laplacian_144_path = './data/normalized_laplacian_144.npy'
@@ -14,7 +14,7 @@ class DefaultConfig(object):
     target_foler = 'output'
     end_dates = '2018-05-31 23:59'
     start_dates = '2018-01-01 01:30:00'
-    model = "gwnet"
+    model = "gwnet"  #模型的型態
     visual = True
     model_train = True
     #test_data_root = './data/test1'  # 测试集存放路径
