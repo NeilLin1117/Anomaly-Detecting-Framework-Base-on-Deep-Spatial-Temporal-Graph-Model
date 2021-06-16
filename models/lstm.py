@@ -5,14 +5,14 @@ from torch.autograd import Variable
 import torch
 
 class LSTM(BasicModule):
-    def __init__(self, input_size, hidden_size, layers, num_classes,sequence_length):
+    def __init__(self, input_size, hidden_size, layers, output_size,sequence_length):
         super(LSTM, self).__init__()
         self.input_size = input_size
         self.sequence_length = sequence_length
         self.hidden_size = hidden_size
         self.num_layers = layers
         self.lstm = nn.LSTM(input_size, hidden_size, layers, batch_first=True)
-        self.fc = nn.Linear(hidden_size, num_classes)
+        self.fc = nn.Linear(hidden_size, output_size)
         '''
         self.regression = nn.Sequential()
         self.regression.add_module('linear0',nn.Linear(6, hidden[0]))
