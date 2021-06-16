@@ -7,7 +7,7 @@ Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Ba
 #### device_ground_truth.csv/
 Data format:
 ```
-last_three_number time bias device_ID
+last_three_number, time, bias, device_ID
 ```
 - last_three_number: 空汙感測器其型號末三碼
 - time: 空汙感測器巡檢日期
