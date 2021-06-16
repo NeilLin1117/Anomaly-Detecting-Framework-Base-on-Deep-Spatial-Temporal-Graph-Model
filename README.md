@@ -15,7 +15,10 @@ last_three_number, time, bias, device_ID
 - device_ID: ID number of the Air Quality Sensors
 
 #### normalized_laplacian_144.npy
-* a npy file store a normalized laplacian graph with 144 nodes
+* a npy file store a normalized laplacian graph structure with 144 nodes
+
+#### normalized_laplacian_144.npy
+* a npy file store a normalized laplacian graph structure with 144 nodes
 
 ## Project experiment environment  
 - OS：  
