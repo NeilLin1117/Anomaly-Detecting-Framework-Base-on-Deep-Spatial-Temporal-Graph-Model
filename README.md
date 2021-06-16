@@ -4,6 +4,7 @@
 Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Base on DeepSpatial-Temporal Graph Model.
 
 ## Quickstart
+## GNN_reg<span></span>.py
 
 ## Datasets
 ### device_ground_truth.csv
