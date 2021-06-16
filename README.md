@@ -5,6 +5,8 @@ Detecting Malfunctioned Air Quality Sensors – anAnomaly Detecting Framework Ba
 
 ## Quickstart
 ### GNN_reg<span></span>.py
+Usage:
+```
 $python GNN_reg.py regression 
                 --name <name of model> 
                 --model <model type, "gwnet" or "STGCN"> 
@@ -23,6 +25,8 @@ $python GNN_reg.py regression
 ```
 
 ### Global_GNN_reg<span></span>.py
+Usage:
+```
 $python Global_GNN_reg.py regression 
                 --name <name of model> 
                 --model <model type, "gwnet" or "STGCN"> 
@@ -41,6 +45,8 @@ $python Global_GNN_reg.py regression
 ```
 
 ### Dep_GNN_reg<span></span>.py
+Usage:
+```
 $python Dep_GNN_reg.py regression 
                 --name <name of model> 
                 --model <model type, "gwnet" or "STGCN"> 
@@ -58,6 +64,8 @@ $python Dep_GNN_reg.py regression
                 --num_nodes=6
 ```
 ### deep_learning_reg<span></span>.py
+Usage:
+```
 $python deep_learning_reg.py regression 
                 --name <name of model> 
                 --model <model type, "TCN" or "LSTM" or "DNN"> 
@@ -73,6 +81,8 @@ $python deep_learning_reg.py regression
                 --use_gpu=True
 ```
 ### machine_learning_reg<span></span>.py
+Usage:
+```
 $python deep_learning_reg.py regression 
                 --name <name of model> 
                 --model <model type, "Lasso" or "Ridge" or "RandomForest"> 
