@@ -22,7 +22,12 @@ last_three_number, time, bias, device_ID
 
 data format:
 ```
-time, ID_1, ID_2, ID_3, ... ID_144
+time , ID_1, ID_2, ID_3, ... , ID_144
+00:00, 18.0, 17.0, 15.0, ... , 27.0
+00:01, 17.0, 18.0, 10.0, ... , 33.0
+00:02, 19.0, 17.0, 16.0, ... , 19.0
+               .
+               .
 ```
 
 ## Project experiment environment  
