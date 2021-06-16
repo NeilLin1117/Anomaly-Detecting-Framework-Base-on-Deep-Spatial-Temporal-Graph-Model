@@ -42,14 +42,27 @@ class DefaultConfig(object):
     step_size = 5
     at_n = 50
     #### Random Forest ####
-    n_estimators = 50
+    n_estimators = 25
     criterion = 'mse'
-    random_state = 1
-    n_jobs=-1
-    
+    random_state = None
+    max_depth=None, 
+    min_samples_split=2, 
+    min_samples_leaf=1, 
+    min_weight_fraction_leaf=0.0, 
+    max_features='auto', 
+    max_leaf_nodes=None, 
+    min_impurity_decrease=0.0, 
+    min_impurity_split=None, 
+    bootstrap=True, 
+    oob_score=False, 
+    n_jobs=None,
+    verbose=0, 
+    warm_start=False, 
+    ccp_alpha=0.0, 
+    max_samples=None
     #### Lasso  and Ridge ####
     alpha=1.0
-    random_state = None
+    
     fit_intercept=True, 
     normalize=False, 
     precompute=False, 
