@@ -130,7 +130,7 @@ time , ID_1, ID_2, ID_3, ... , ID_144
                .
 ```
 ### normalized_laplacian_144.npy
-* a npy file store a normalized laplacian graph structure with 144 nodes.
+* a npy file store a normalized laplacian graph matrix with 144 nodes.
 
 ### temporal_spatio_pm_2_5 
 * a folder contain 144 csv files.
@@ -150,7 +150,7 @@ time , label, ID_1, ID_2, ... , ID_5
 
 ### normalized_laplacian
 * a folder contain 144 npy files.
-* each npy file contain store a normalized laplacian graph structure with 6 nodes.
+* each npy file contain store a normalized laplacian graph matrix with 6 nodes.
 * each npy file is the graph structure correspond to the csv file in temporal_spatio_pm_2_5 folder
 
 ## Project experiment environment  
