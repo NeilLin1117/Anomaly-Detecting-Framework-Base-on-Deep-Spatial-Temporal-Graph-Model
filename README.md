@@ -162,3 +162,4 @@ time , label, ID_1, ID_2, ... , ID_5
 1. https://github.com/chenyuntc/pytorch-book
 2. https://github.com/nnzhan/Graph-WaveNet
 3. https://github.com/Aguin/STGCN-PyTorch
+4. https://github.com/locuslab/TCN
