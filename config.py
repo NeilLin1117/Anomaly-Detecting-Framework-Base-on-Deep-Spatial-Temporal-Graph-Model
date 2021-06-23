@@ -71,7 +71,7 @@ class DefaultConfig(object):
     tol=0.0001, 
     warm_start=False, 
     positive=False,
-    selection='cyclic
+    selection='cyclic',
     solver='auto'
     
     #### STGCN ####
