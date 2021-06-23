@@ -45,33 +45,33 @@ class DefaultConfig(object):
     n_estimators = 25
     criterion = 'mse'
     random_state = None
-    max_depth=None, 
-    min_samples_split=2, 
-    min_samples_leaf=1, 
-    min_weight_fraction_leaf=0.0, 
-    max_features='auto', 
-    max_leaf_nodes=None, 
-    min_impurity_decrease=0.0, 
-    min_impurity_split=None, 
-    bootstrap=True, 
-    oob_score=False, 
-    n_jobs=None,
-    verbose=0, 
-    warm_start=False, 
-    ccp_alpha=0.0, 
+    max_depth=None 
+    min_samples_split=2 
+    min_samples_leaf=1 
+    min_weight_fraction_leaf=0.0 
+    max_features='auto' 
+    max_leaf_nodes=None 
+    min_impurity_decrease=0.0
+    min_impurity_split=None 
+    bootstrap=True 
+    oob_score=False 
+    n_jobs=None
+    verbose=0 
+    warm_start=False 
+    ccp_alpha=0.0 
     max_samples=None
     #### Lasso  and Ridge ####
     alpha=1.0
     
-    fit_intercept=True, 
-    normalize=False, 
-    precompute=False, 
-    copy_X=True, 
-    max_iter=1000, 
-    tol=0.0001, 
-    warm_start=False, 
-    positive=False,
-    selection='cyclic',
+    fit_intercept=True 
+    normalize=False 
+    precompute=False 
+    copy_X=True 
+    max_iter=1000 
+    tol=0.0001 
+    warm_start=False 
+    positive=False
+    selection='cyclic'
     solver='auto'
     
     #### STGCN ####
