@@ -10,7 +10,7 @@ Detecting Malfunctioned Air Quality Sensors – an Anomaly Detecting Framework B
 Usage:
 ```
 $python GNN_reg.py regression 
-                --name <name of model> 
+                --name <name of model, You can choose any name> 
                 --model <model type, "gwnet" or "STGCN"> 
                 --max_epoch <number of epoch>
                 --use_gpu <weather use gpu>
@@ -32,7 +32,7 @@ $python GNN_reg.py regression
 Usage:
 ```
 $python Global_GNN_reg.py regression 
-                --name <name of model> 
+                --name <name of model, You can choose any name> 
                 --model <model type, "gwnet" or "STGCN"> 
                 --max_epoch <number of epoch>
                 --use_gpu <weather use gpu>
@@ -54,7 +54,7 @@ $python Global_GNN_reg.py regression
 Usage:
 ```
 $python Dep_GNN_reg.py regression 
-                --name <name of model> 
+                --name <name of model, You can choose any name> 
                 --model <model type, "gwnet" or "STGCN"> 
                 --max_epoch <number of epoch>
                 --use_gpu <weather use gpu>
@@ -75,7 +75,7 @@ $python Dep_GNN_reg.py regression
 Usage:
 ```
 $python deep_learning_reg.py regression 
-                --name <name of model> 
+                --name <name of model, You can choose any name> 
                 --model <model type, "TCN" or "LSTM" or "DNN"> 
                 --max_epoch <number of epoch>
                 --use_gpu <weather use gpu>
@@ -94,7 +94,7 @@ $python deep_learning_reg.py regression
 Usage:
 ```
 $python deep_learning_reg.py regression 
-                --name <name of model> 
+                --name <name of model, You can choose any name> 
                 --model <model type, "Lasso" or "Ridge" or "RandomForest"> 
                 --max_epoch <number of epoch>
 ```
