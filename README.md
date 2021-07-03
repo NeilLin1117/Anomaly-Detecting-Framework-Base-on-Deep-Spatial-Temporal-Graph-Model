@@ -41,7 +41,7 @@ $python Global_GNN_reg.py regression
 Example:
 ```
 $python Global_GNN_reg.py regression 
-                --name="GraphWaveNet_v1"
+                --name="Global_GraphWaveNet_v1"
                 --model="gwnet"
                 --max_epoch=10
                 --use_gpu=True
@@ -63,7 +63,7 @@ $python Dep_GNN_reg.py regression
 Example:
 ```
 $python Dep_GNN_reg.py regression 
-                --name="GraphWaveNet_v1"
+                --name="Dep_GraphWaveNet_v1"
                 --model="gwnet"
                 --max_epoch=10
                 --use_gpu=True
@@ -93,14 +93,14 @@ $python deep_learning_reg.py regression
 
 Usage:
 ```
-$python deep_learning_reg.py regression 
+$python machine_learning_reg.py regression 
                 --name <name of model, You can choose any name> 
                 --model <model type, "Lasso" or "Ridge" or "RandomForest"> 
                 --max_epoch <number of epoch>
 ```
 Example:
 ```
-$python deep_learning_reg.py regression 
+$python machine_learning_reg.py regression 
                 --name="Lasso_v1"
                 --model="Lasso"
                 --max_epoch=10
