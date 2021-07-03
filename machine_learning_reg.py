@@ -64,7 +64,7 @@ class Machine_learning_Regression():
 #         self.df.iloc[:,2] = self.df.iloc[:,2].map(format)
 #         format = lambda x : '%d' %x
         self.df['bias'] = self.df['bias'].astype(int)
-        self.evl_df = pd.DataFrame(columns=['Date','MSE','R2_score','bias'])
+        self.evl_df = pd.DataFrame(columns=['Date','device_ID','MSE','R2_score','bias'])
         for i in trange(self.df.shape[0], desc='progressing device number'):
         #for i in range(self.df.shape[0]):
            
@@ -129,6 +129,7 @@ class Machine_learning_Regression():
         #for date in dates: 
         test_y , pm2_5_y_pred = self.data_output(pm2_5,date,day_format)
         self.evl_df = self.evl_df.append({"Date":date.strftime(day_format),
+                              "device_ID":self.df.iloc[index]['device_ID'],
                               "MSE":mean_squared_error(test_y, pm2_5_y_pred)
                         ,"R2_score":r2_score(test_y, pm2_5_y_pred),
                       "bias": self.df.iloc[index]['bias']},ignore_index=True)
@@ -156,7 +157,7 @@ class Machine_learning_Regression():
         
         if not os.path.exists(os.path.join('.','save')):
             os.mkdir(os.path.join('.','save'))
-        #檢查save目錄下是否有模型的資料夾存在
+        #檢查checkpoints目錄下是否有模型的資料夾存在
         if not os.path.exists(os.path.join('save',name)):
             os.mkdir(os.path.join('save',name))
         if not os.path.exists(os.path.join('save',name,device)):

@@ -15,7 +15,6 @@ import time
 import inspect
 from models import gwnet,STGCN
 from data import tem_spa_Time_series
-import torch.nn as nn
 from utils import plain_evl_result
 import fire
 from sklearn.metrics import mean_squared_error, r2_score
@@ -81,7 +80,7 @@ class Global_GNN_Regression():
 #             print(f'name: {name}, parameter: {parameter.is_cuda}') # w and b 
         #print(next(self.model.parameters()).is_cuda)
         #print(self.model.is_cuda)
-        self.evl_df = pd.DataFrame(columns=['Date','MSE','R2_score','bias'])
+        self.evl_df = pd.DataFrame(columns=['Date','device_ID','MSE','R2_score','bias'])
         for i in trange(self.df.shape[0], desc='progressing device number'):
 #             torch.cuda.empty_cache() 
             if str(self.df.iloc[i]['device_ID']) not in col_list:
@@ -167,6 +166,7 @@ class Global_GNN_Regression():
         labs , result = self.data_output(Model,pm2_5,date,day_format,label_index)
         
         self.evl_df = self.evl_df.append({"Date":date.strftime(day_format),
+                            "device_ID":self.df.iloc[index]['device_ID'],
                             "MSE":mean_squared_error(labs, result)
                                 ,"R2_score":r2_score(labs, result)
                                 ,"bias": self.df.iloc[index]['bias']},ignore_index=True)        

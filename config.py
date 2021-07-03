@@ -17,7 +17,7 @@ class DefaultConfig(object):
     model = "gwnet"  #模型的型態
     visual = True
     model_train = True
-    #test_data_root = './data/test1'  # 测试集存放路径
+    #test_data_root = './data/test1'  
     load_model_path = None  # load pretrain model，If None represent not load pretrain model path
     batch_size = 64  # batch size
     use_gpu = True  # user GPU or not

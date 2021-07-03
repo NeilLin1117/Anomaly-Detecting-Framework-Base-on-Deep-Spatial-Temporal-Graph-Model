@@ -47,7 +47,7 @@ class GNN_Regression():
 #             os.mkdir(os.path.join(self.opt.target_foler,self.opt.name))
 
         self.df['bias'] = self.df['bias'].astype(int)
-        self.evl_df = pd.DataFrame(columns=['Date','MSE','R2_score','bias'])
+        self.evl_df = pd.DataFrame(columns=['Date','device_ID','MSE','R2_score','bias'])
 #         for i in tqdm_notebook(range(self.df.shape[0]), desc='1st loop'):
         for i in trange(len(self.df), desc='progressing device number'):
             Model = copy.deepcopy(self.model)
@@ -187,6 +187,7 @@ class GNN_Regression():
         labs , result = self.data_output(Model,pm2_5,date,day_format,index)
         
         self.evl_df = self.evl_df.append({"Date":date.strftime(day_format),
+                            "device_ID":self.df.iloc[index]['device_ID'],  
                             "MSE":mean_squared_error(labs, result)
                                 ,"R2_score":r2_score(labs, result),
                                  "bias": self.df.iloc[index]['bias']},ignore_index=True)         

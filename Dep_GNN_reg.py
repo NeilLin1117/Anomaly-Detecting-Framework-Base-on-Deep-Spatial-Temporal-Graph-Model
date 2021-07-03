@@ -52,7 +52,7 @@ class Dep_GNN_Regression():
 #         format = lambda x : '%d' %x
 #         self.df.iloc[:,2] = self.df.iloc[:,2].map(format)
         
-        self.evl_df = pd.DataFrame(columns=['Date','MSE','R2_score','bias'])
+        self.evl_df = pd.DataFrame(columns=['Date','device_ID','MSE','R2_score','bias'])
         for i in trange(self.df.shape[0], desc='1st loop'):
             loss_function = nn.MSELoss()
             lr = self.opt.lr
@@ -288,6 +288,7 @@ class Dep_GNN_Regression():
         labs , result = self.data_output(Model,pm2_5,date,day_format,index)
         
         self.evl_df = self.evl_df.append({"Date":date.strftime(day_format),
+                            "device_ID":self.df.iloc[index]['device_ID'],
                             "MSE":mean_squared_error(labs, result)
                                 ,"R2_score":r2_score(labs, result),
                                  "bias": self.df.iloc[index]['bias']},ignore_index=True)
