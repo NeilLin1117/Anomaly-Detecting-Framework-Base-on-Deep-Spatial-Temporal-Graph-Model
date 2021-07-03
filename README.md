@@ -96,14 +96,12 @@ Usage:
 $python machine_learning_reg.py regression 
                 --name <name of model, You can choose any name> 
                 --model <model type, "Lasso" or "Ridge" or "RandomForest"> 
-                --max_epoch <number of epoch>
 ```
 Example:
 ```
 $python machine_learning_reg.py regression 
                 --name="Lasso_v1"
                 --model="Lasso"
-                --max_epoch=10
 ```
 ### Model parameters/ [description](https://hackmd.io/8tQ4zjZ-TG-bFzA3Uchumw?view) 
 ## Datasets
