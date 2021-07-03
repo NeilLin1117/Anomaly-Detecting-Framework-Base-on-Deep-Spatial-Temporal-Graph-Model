@@ -147,7 +147,7 @@ class Machine_learning_Regression():
         new_data = self.time_rolling(test_train_date,test,test_start_dates,test_end_dates,self.opt.previous)
         #test = test.loc[test_start_dates:]
         labels = test.loc[test_start_dates:]
-        labels = labels.loc[:,['predict']].values
+        labels = labels.loc[:,['label']].values
         pm2_5_y_pred = self.pipe_lr.predict(new_data)   
         pm2_5_y_pred = pm2_5_y_pred.reshape(-1, 1)
         labels = labels.reshape(-1, 1)
