@@ -102,7 +102,7 @@ class Machine_learning_Regression():
             labels = labels.loc[:,['label']].values
             
             if self.opt.model_train:
-                self.pipe_lr.fit(new_data, labels)
+                self.pipe_lr.fit(new_data, labels.ravel())
                 if self.opt.model_save:
                     self.save(self.opt.name,str(self.df.iloc[i]['device_ID']))
             #end = str(end)[:-3]
