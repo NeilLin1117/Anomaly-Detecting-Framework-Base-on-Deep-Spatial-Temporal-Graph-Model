@@ -104,6 +104,7 @@ $python machine_learning_reg.py regression
                 --model="Lasso"
 ```
 ### Model parameters/ [description](https://hackmd.io/8tQ4zjZ-TG-bFzA3Uchumw?view) 
+### Other hyperparameter setting please see the config.py file
 ## Datasets
 ### device_ground_truth.csv
 csv format:
