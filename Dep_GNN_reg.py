@@ -178,10 +178,10 @@ class Dep_GNN_Regression():
                         if self.opt.load_model_path:
                             try:
                                 for dirPath, dirNames, fileNames in os.walk(
-                                            os.path.join('check',self.opt.load_model_path)):
+                                            os.path.join('save',self.opt.load_model_path)):
                                     self.model.load(os.path.join(dirPath,fileNames[0]))
                             except:
-                                path = path = os.path.join("check",self.opt.load_model_path)
+                                path = path = os.path.join("save",self.opt.load_model_path)
                                 raise ValueError(f'Not exist {path!r} model path!')
                             
                             self.opt.load_model_path = None
