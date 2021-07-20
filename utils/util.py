@@ -2,7 +2,20 @@ import pandas as pd
 import os
 import shutil
 import matplotlib.pyplot as plt
-from sklearn.metrics import roc_curve, auc  ###计算roc和auc
+from sklearn.metrics import roc_curve, auc, precision_recall_curve ###计算roc和auc
+
+def plain_auc(x,y,auc,label_name,xlabel,ylabel,title,color,save):
+    plt.cla()
+    plt.plot(x, y, color = color ,linestyle='--', 
+                 label = f'{label_name} (area = {auc.2f}, {auc.3f})')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.legend(loc="best")
+    plt.savefig(save, dpi=120)
+    plt.show()
 
 def plain_evl_result(dataframe,target,name,at_n):
     #### cal auc curve ####
@@ -11,22 +24,21 @@ def plain_evl_result(dataframe,target,name,at_n):
     df['score'] =  range(len(df))
     df = df.sort_values(by='score', ascending=False)
     df['bias'] = df['bias'].astype(int)
+    
+    ## Roc curve
     fpr,tpr,threshold = roc_curve(df['bias'], df['score']) ###计算真正率和假正率
     roc_auc = auc(fpr,tpr) ###计算auc的值
-    plt.plot(fpr, tpr, color = 'green' ,linestyle='--', 
-                 label = 'Roc curve (area = %0.2f, ' % roc_auc + '%0.3f) ' % roc_auc)
     print(f'Roc curve score: {roc_auc:.3f}')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Model of Roc curve')
-    plt.legend(loc="best")
-    #plt.savefig('result/Model_Roc_by_hour.png', dpi=120)
-    plt.savefig(os.path.join(target,name,'Model_Roc_curve.png'), dpi=120)
-    plt.show()
-    plt.cla()
+    plain_auc(fpr,tpr,roc_auc,'Roc curve','False Positive Rate','True Positive Rate',
+              title='Model of Roc curve',color='green',save=os.path.join(target,name,'Model_Roc_curve.png'))
+    ## PR curve
+    precision, recall, threshold = precision_recall_curve(df['bias'], df['score'])
+    PR_auc = auc(recall,precision)
+    print(f'PR curve score: {PR_auc:.3f}')
+    plain_auc(recall,precision,PR_auc,'PR curve','Recall','Precision',
+              title='Model of PR curve',color='darkorange',save=os.path.join(target,name,'Model_PR_curve.png'))
     
+    plt.cla()
     precision = []
     recall = []
     #### Precision@n and Recall@n ####
