@@ -15,6 +15,7 @@ $python GNN_reg.py regression
                 --max_epoch <number of epoch>
                 --use_gpu <weather use gpu>
                 --num_nodes <number of graph node>
+                --visual= <show figures during the training process, TRUE or FALSE>
 ```
 Example:
 ```
@@ -24,6 +25,7 @@ $python GNN_reg.py regression
                 --max_epoch=10
                 --use_gpu=True
                 --num_nodes=6
+                --visual=False
 ```
 
 ### Global_GNN_reg<span></span>.py
