@@ -128,6 +128,8 @@ class Machine_learning_Regression():
         #df_1 = pd.DataFrame(columns=['Date','MSE','Score'])
         #for date in dates: 
         test_y , pm2_5_y_pred = self.data_output(pm2_5,date,day_format)
+        if True in np.isnan(pm2_5_y_pred):
+            pm2_5_y_pred = np.nan_to_num(pm2_5_y_pred)
         self.evl_df = self.evl_df.append({"Date":date.strftime(day_format),
                               "device_ID":self.df.iloc[index]['device_ID'],
                               "MSE":mean_squared_error(test_y, pm2_5_y_pred)

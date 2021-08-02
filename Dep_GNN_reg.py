@@ -287,6 +287,9 @@ class Dep_GNN_Regression():
         #for date in dates:
         labs , result = self.data_output(Model,pm2_5,date,day_format,index)
         
+        if True in np.isnan(result):
+            result = np.nan_to_num(result)
+        
         self.evl_df = self.evl_df.append({"Date":date.strftime(day_format),
                             "device_ID":self.df.iloc[index]['device_ID'],
                             "MSE":mean_squared_error(labs, result)
