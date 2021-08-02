@@ -7,7 +7,7 @@ from sklearn.metrics import roc_curve, auc, precision_recall_curve ###计算roc�
 def plain_auc(x,y,auc,label_name,xlabel,ylabel,title,color,save):
     plt.cla()
     plt.plot(x, y, color = color ,linestyle='--', 
-                 label = f'{label_name} (area = {auc.2f}, {auc.3f})')
+                 label = f'{label_name} (area = {auc:.2f}, {auc:.3f})')
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
     plt.xlabel(xlabel)
