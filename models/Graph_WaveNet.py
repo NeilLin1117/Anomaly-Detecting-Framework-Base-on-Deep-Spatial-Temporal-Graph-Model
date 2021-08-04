@@ -58,9 +58,9 @@ class gcn(nn.Module):
 
 
 class gwnet(BasicModule):
-    def __init__(self,device=torch.device('cpu'), num_nodes = 6, dropout=0.3, gcn_bool=True, addaptadj=True, aptinit=None, 
-             in_dim=1,out_dim=1,sequence_length = 30,residual_channels=32,dilation_channels=32,skip_channels=256,
-                 end_channels=512,kernel_size=2,blocks=4,layers=2):
+    def __init__(self,device=torch.device('cpu') , num_nodes = 6, dropout=0.3, gcn_bool=True, addaptadj=True, 
+                 aptinit=None,in_dim=1,out_dim=1,sequence_length =30,residual_channels=32,
+                 dilation_channels=32,skip_channels=256,end_channels=512,kernel_size=2,blocks=4,layers=2):
         super().__init__()
         
         self.dropout = dropout
@@ -175,10 +175,10 @@ class gwnet(BasicModule):
         #self.end_conv_2 = nn.Linear(self.end_channels, self.out_dim)
         
         
-    def forward(self, input,device):
-        input = input.view(-1, 1,self.num_nodes, self.seq_len)
+    def forward(self, inputs,device):
+        inputs = inputs.view(-1, 1,self.num_nodes, self.seq_len)
         
-        in_len = input.size(3)
+        in_len = inputs.size(3)
         
         '''
         if in_len<self.receptive_field:
@@ -186,7 +186,7 @@ class gwnet(BasicModule):
         else:
             x = input
         '''
-        x = input
+        x = inputs
         x = self.start_conv(x)
         skip = 0
 

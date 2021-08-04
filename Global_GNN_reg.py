@@ -100,7 +100,7 @@ class Global_GNN_Regression():
             
             if self.opt.model_train:
                 dataset = tem_spa_Time_series(pm2_5,self.opt.previous,self.opt.start_dates,
-                                            self.opt.end_dates,node_cnt = self.opt.input_size
+                                            self.opt.end_dates,node_cnt = self.opt.num_nodes
                                               ,mul_label = True)
                 train_loader = torch.utils.data.DataLoader(dataset=dataset,
                                                    batch_size=self.opt.batch_size, 
@@ -117,6 +117,7 @@ class Global_GNN_Regression():
                     for s, (datas, labels) in enumerate(train_loader):
                         datas = datas.to(self.opt.device)
                         labels = labels.to(self.opt.device)
+#                         print(f'input data shape: {datas.shape}')
                         y_pred = self.model(datas,self.opt.device)
                         #print(y_pred.size())
                         optimizer.zero_grad()
@@ -177,7 +178,7 @@ class Global_GNN_Regression():
         test_start_dates = str(test.index[0])
         test_end_dates = str(test.index[test.shape[0]-1])
         dataset = tem_spa_Time_series(pm2_5,self.opt.previous,
-                                  test_start_dates,test_end_dates,node_cnt = self.opt.input_size,
+                                  test_start_dates,test_end_dates,node_cnt = self.opt.num_nodes,
                                       mul_label=True)
         test_loader = torch.utils.data.DataLoader(dataset=dataset,
                                            batch_size=self.opt.batch_size, 
