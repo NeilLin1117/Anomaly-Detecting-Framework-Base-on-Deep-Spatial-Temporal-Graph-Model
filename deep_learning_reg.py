@@ -21,14 +21,13 @@ import copy
 
 class Deep_learning_Regression():
     
-    def __init__(self,model,opt):
+    def __init__(self,opt):
         #self.opt = DefaultConfig()
         self.opt = opt
-        self.model = model
     def opt_update(self,**kwargs):
         self.opt._parse(kwargs)
         
-    def train(self):
+    def train(self,model,model_kwargs):
         
         #self.opt._parse(kwargs)
         #self.get_model_type()
@@ -41,8 +40,13 @@ class Deep_learning_Regression():
 #         format = lambda x : '%d' %x
         self.df['bias']= self.df['bias'].astype(int)
         self.evl_df = pd.DataFrame(columns=['Date','device_ID','MSE','R2_score','bias'])
+        
+#         for name, param in self.model.named_parameters():
+#         for key, value in self.model.__dict__.items():
+#             print(f'{key} is leaf: {value.is_leaf}')
+        
         for i in trange(self.df.shape[0], desc='progressing device number'):
-            Model = copy.deepcopy(self.model) 
+            Model = model.generate_model(model_kwargs)
             Model = Model.to(self.opt.device)
             loss_function = nn.MSELoss()
             lr = self.opt.lr
@@ -157,26 +161,26 @@ def regression(**kwargs):
             for k in inspect.getfullargspec(DNN).args:
                 if hasattr(opt, k):
                     model_kwargs[k] = getattr(opt,k)
-            model = DNN(**model_kwargs)
+            model = DNN
             break
         if case ('LSTM'):
             for k in inspect.getfullargspec(LSTM).args:
                 if hasattr(opt, k):
                     model_kwargs[k] = getattr(opt,k)
-            model = LSTM(**model_kwargs)
+            model = LSTM
             break
 
         if case ('TCN'):
             for k in inspect.getfullargspec(TCN).args:
                 if hasattr(opt, k):
                     model_kwargs[k] = getattr(opt,k)
-            model = TCN(**model_kwargs)
+            model = TCN
             break
         if case():
             raise ValueError(f'Invalid inputs model type ,must be'
                                 '{"DNN"!r} or {"TCN"!r} or {"LSTM"!r} !')
-    Regression = Deep_learning_Regression(model,opt)
-    Regression.train()
+    Regression = Deep_learning_Regression(opt)
+    Regression.train(model,model_kwargs)
     
 if __name__ == '__main__':
     fire.Fire()

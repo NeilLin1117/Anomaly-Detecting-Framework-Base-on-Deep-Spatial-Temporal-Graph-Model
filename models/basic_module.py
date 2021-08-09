@@ -60,6 +60,10 @@ class BasicModule(nn.Module):
         t.save(self.state_dict(), names)
         return names
     
+    @classmethod
+    def generate_model(cls, config):
+        return cls(**config)
+    
     def get_optimizer(self, lr, weight_decay):
         return t.optim.RMSprop(self.parameters(), lr=lr, weight_decay=weight_decay)
         #return t.optim.Adam(self.parameters(), lr=lr, weight_decay=weight_decay)

@@ -12,7 +12,8 @@ class Chomp1d(nn.Module):
         """
         其实这就是一个裁剪的模块，裁剪多出来的padding
         """
-        return x[:, :, :-self.chomp_size].contiguous()
+        output = x[:, :, :-self.chomp_size].contiguous()
+        return output
 
 
 class TemporalBlock(nn.Module):

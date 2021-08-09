@@ -22,9 +22,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 
 class GNN_Regression():
-    def __init__(self,model,opt):
-        self.opt = copy.deepcopy(opt)
-        self.model = model
+    def __init__(self,opt):
+        self.opt = opt
         #self.opt = DefaultConfig()
     def opt_update(self,**kwargs):
         self.opt._parse(kwargs)
@@ -36,7 +35,7 @@ class GNN_Regression():
             LL.append(np.matmul(2 * L, LL[-1]) - LL[-2])
         return np.asarray(LL)
 
-    def train(self):
+    def train(self,model,model_kwargs):
         #self.opt._parse(kwargs)
         
         #self.get_model_type()        
@@ -50,7 +49,7 @@ class GNN_Regression():
         self.evl_df = pd.DataFrame(columns=['Date','device_ID','MSE','R2_score','bias'])
 #         for i in tqdm_notebook(range(self.df.shape[0]), desc='1st loop'):
         for i in trange(len(self.df), desc='progressing device number'):
-            Model = copy.deepcopy(self.model)
+            Model = model.generate_model(model_kwargs)
             Lk = []
             loss_function = nn.MSELoss()
             lr = self.opt.lr
@@ -72,7 +71,7 @@ class GNN_Regression():
             else:
                 continue
             Model.set_network(Lk)
-            Model.to(self.opt.device)
+            Model = Model.to(self.opt.device)
             if self.opt.load_model_path:
                 try:
                     for dirPath, dirNames, fileNames in os.walk(os.path.join
@@ -204,19 +203,19 @@ def regression(**kwargs):
             for k in inspect.getfullargspec(gwnet).args:
                 if hasattr(opt, k):
                     model_kwargs[k] = getattr(opt,k)
-            model = gwnet(**model_kwargs)
+            model = gwnet
             break
         if case ('STGCN'):
             for k in inspect.getfullargspec(STGCN).args:
                 if hasattr(opt, k):
                     model_kwargs[k] = getattr(opt,k)
-            model = STGCN(**model_kwargs)
+            model = STGCN
             break  
 
         if case():
             raise ValueError(f'Invalid inputs model type ,must be {"gwnet"!r} or {"STGCN"!r} !')
-    Regression = GNN_Regression(model,opt)
-    Regression.train()
+    Regression = GNN_Regression(opt)
+    Regression.train(model,model_kwargs)
     
 if __name__ == '__main__':
     fire.Fire()
