@@ -2,7 +2,7 @@
 
 ## Introduction
 An Anomaly Detecting Framework Base on DeepSpatial-Temporal Graph Model to detect malfunctioned air quality sensors.
-Paper Links: https://drive.google.com/file/d/19bCz4iNNMLlOtL3Ro27JT555vrMS_Eew/view
+[Paper Links](https://drive.google.com/file/d/19bCz4iNNMLlOtL3Ro27JT555vrMS_Eew/view)
 
 ## Quickstart
 ### GNN_reg<span></span>.py
